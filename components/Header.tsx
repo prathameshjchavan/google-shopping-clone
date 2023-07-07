@@ -26,7 +26,7 @@ const prices = ["", "100", "250", "500", "750", "900", "1000+"];
 
 const Header = (props: Props) => {
 	const [pages, setPages] = useState("");
-	const [sortBy, setSortBy] = useState("");
+	const [sortBy, setSortBy] = useState("r");
 	const [minPrice, setMinPrice] = useState("");
 	const [maxPrice, setMaxPrice] = useState("");
 	const router = useRouter();
