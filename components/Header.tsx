@@ -115,7 +115,7 @@ const Header = (props: Props) => {
 
 						<SearchSelect
 							className="min-w-4"
-							placeholder="Min Price..."
+							placeholder="Max Price..."
 							onValueChange={(value) => setMaxPrice(value)}
 						>
 							{maxPrices.map((price, i) => (
