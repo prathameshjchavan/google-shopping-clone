@@ -10,6 +10,7 @@ import {
 	Select,
 	SelectItem,
 } from "@tremor/react";
+import Avatar from "react-avatar";
 
 type Props = {};
 
@@ -19,7 +20,7 @@ const SORT_BY_MAP = {
 	p: "By Price (low to high)",
 	pd: "By Price (high to low)",
 };
-const prices = ["", "100", "250", "500", "750", "900", "1000+"]
+const prices = ["", "100", "250", "500", "750", "900", "1000+"];
 
 const Header = (props: Props) => {
 	return (
@@ -70,26 +71,27 @@ const Header = (props: Props) => {
 						</Select>
 
 						<SearchSelect className="min-w-4" placeholder="Min Price...">
-							{prices.map(
-								(price, i) => (
-									<SearchSelectItem key={i} value={price}>
-										{i === 0 ? "No Minimum" : `$${price}`}
-									</SearchSelectItem>
-								)
-							)}
+							{prices.map((price, i) => (
+								<SearchSelectItem key={i} value={price}>
+									{i === 0 ? "No Minimum" : `$${price}`}
+								</SearchSelectItem>
+							))}
 						</SearchSelect>
 
 						<SearchSelect>
-							{prices.map(
-								(price, i) => (
-									<SearchSelectItem key={i} value={price}>
-										{i === 0 ? "No Maximum" : `$${price}`}
-									</SearchSelectItem>
-								)
-							)}
+							{prices.map((price, i) => (
+								<SearchSelectItem key={i} value={price}>
+									{i === 0 ? "No Maximum" : `$${price}`}
+								</SearchSelectItem>
+							))}
 						</SearchSelect>
 					</div>
 				</form>
+			</div>
+
+			<div className="hidden lg:inline-flex flex-1 justify-end">
+				{/* Avatar */}
+				<Avatar name="Prathamesh Chavan" round size="50" />
 			</div>
 		</header>
 	);
