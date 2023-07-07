@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import SearchButton from "./SearchButton";
 
 type Props = {};
 
@@ -34,6 +35,7 @@ const Header = (props: Props) => {
 						</div>
 
 						{/* Search */}
+						<SearchButton />
 					</div>
 				</form>
 			</div>
