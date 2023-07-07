@@ -22,7 +22,8 @@ const SORT_BY_MAP = {
 	p: "By Price (low to high)",
 	pd: "By Price (high to low)",
 };
-const prices = ["", "100", "250", "500", "750", "900", "1000+"];
+const maxPrices = ["", "100", "250", "500", "750", "900", "1000+"];
+const minPrices = ["", "100", "250", "500", "750", "900", "1000"];
 
 const Header = (props: Props) => {
 	const [pages, setPages] = useState("");
@@ -105,7 +106,7 @@ const Header = (props: Props) => {
 							placeholder="Min Price..."
 							onValueChange={(value) => setMinPrice(value)}
 						>
-							{prices.map((price, i) => (
+							{minPrices.map((price, i) => (
 								<SearchSelectItem key={i} value={price}>
 									{i === 0 ? "No Minimum" : `$${price}`}
 								</SearchSelectItem>
@@ -117,7 +118,7 @@ const Header = (props: Props) => {
 							placeholder="Min Price..."
 							onValueChange={(value) => setMaxPrice(value)}
 						>
-							{prices.map((price, i) => (
+							{maxPrices.map((price, i) => (
 								<SearchSelectItem key={i} value={price}>
 									{i === 0 ? "No Maximum" : `$${price}`}
 								</SearchSelectItem>
