@@ -1,3 +1,4 @@
+import ResultsList from "@/components/ResultsList";
 import { getFetchUrl } from "@/lib/getFetchUrl";
 import { PageResult, SearchParams } from "@/typings";
 import { redirect } from "next/navigation";
@@ -24,7 +25,11 @@ const SearchPage = async ({ searchParams, params: { term } }: Props) => {
 
 	console.log(results);
 
-	return <div></div>;
+	return (
+		<div>
+			<ResultsList results={results} term={term} />
+		</div>
+	);
 };
 
 export default SearchPage;
