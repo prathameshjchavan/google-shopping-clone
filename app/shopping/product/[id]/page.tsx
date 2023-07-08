@@ -56,13 +56,16 @@ const page = async ({ params: { id } }: Props) => {
 							alt=""
 						/>
 						<div className="flex flex-col justify-between">
-							{productData.content.images.full_size.slice(1, 3).map((image) => (
-								<img
-									src={image}
-									alt=""
-									className="w-[9.5rem] h-[9.5rem] object-contain border rounded-md"
-								/>
-							))}
+							{productData.content.images.full_size
+								.slice(1, 3)
+								.map((image, i) => (
+									<img
+										key={i}
+										src={image}
+										alt=""
+										className="w-[9.5rem] h-[9.5rem] object-contain border rounded-md"
+									/>
+								))}
 						</div>
 					</div>
 
@@ -163,7 +166,7 @@ const page = async ({ params: { id } }: Props) => {
 									))}
 								</div>
 
-								<p>"{productData.content.reviews.top_review.text}"</p>
+								<p>&quot;{productData.content.reviews.top_review.text}&quot;</p>
 							</div>
 						)}
 					</Fragment>

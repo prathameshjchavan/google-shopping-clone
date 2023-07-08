@@ -51,7 +51,7 @@ const ResultsList = ({ results, term }: Props) => {
 							</div>
 
 							<h3 className="font-extralight">
-								Showing results for "{decodeURIComponent(term)}"
+								Showing results for &quot;{decodeURIComponent(term)}&quot;
 							</h3>
 						</div>
 
