@@ -21,6 +21,9 @@ const SearchPage = async ({ searchParams, params: { term } }: Props) => {
 	const response = await fetch(getFetchUrl("/api/search"), {
 		method: "POST",
 		body: JSON.stringify({ searchTerm: term, ...searchParams }),
+		headers: {
+			"Content-Type": "application/json",
+		},
 	});
 
 	const results = (await response.json()) as PageResult[];

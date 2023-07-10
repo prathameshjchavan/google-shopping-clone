@@ -6,10 +6,9 @@ export async function POST(request: Request) {
 	const searchParams: SearchParams = params;
 
 	if (!searchTerm) {
-		return NextResponse.next(
-			new Response("Missing search term", {
-				status: 400,
-			})
+		return NextResponse.json(
+			{ message: "Missing search term" },
+			{ status: 400 }
 		);
 	}
 
@@ -33,7 +32,7 @@ export async function POST(request: Request) {
 		headers: {
 			"Content-Type": "application/json",
 			Authorization: `Basic ${Buffer.from(
-				`${process.env.OXYLABS_USERNAME}:${process.env.OXYLABS_PASSWORD}`
+				`${process.env.NEXT_PUBLIC_OXYLABS_USERNAME}:${process.env.NEXT_PUBLIC_OXYLABS_PASSWORD}`
 			).toString("base64")}`,
 		},
 		cache: "no-store",
@@ -51,5 +50,5 @@ export async function POST(request: Request) {
 
 	const pageResults: PageResult[] = data.results;
 
-	return NextResponse.json(pageResults);
+	return NextResponse.json(pageResults, { status: 200 });
 }

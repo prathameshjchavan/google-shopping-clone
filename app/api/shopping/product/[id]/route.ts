@@ -9,10 +9,9 @@ type Props = {
 
 export async function GET(request: Request, { params: { id } }: Props) {
 	if (!id) {
-		return NextResponse.next(
-			new Response("Missing product ID", {
-				status: 400,
-			})
+		return NextResponse.json(
+			{ message: "Missing product ID" },
+			{ status: 400 }
 		);
 	}
 
@@ -29,7 +28,7 @@ export async function GET(request: Request, { params: { id } }: Props) {
 			Authorization:
 				"Basic " +
 				Buffer.from(
-					`${process.env.OXYLABS_USERNAME}:${process.env.OXYLABS_PASSWORD}`
+					`${process.env.NEXT_PUBLIC_OXYLABS_USERNAME}:${process.env.NEXT_PUBLIC_OXYLABS_PASSWORD}`
 				).toString("base64"),
 		},
 		cache: "no-store",
@@ -38,14 +37,12 @@ export async function GET(request: Request, { params: { id } }: Props) {
 	const data = await response.json();
 
 	if (data.results.length === 0) {
-		return NextResponse.next(
-			new Response("No product found", {
-				status: 404,
-			})
-		);
+		return new Response("No product found", {
+			status: 404,
+		});
 	}
 
 	const productData: ProductData = data.results[0];
 
-	return NextResponse.json(productData);
+	return NextResponse.json(productData, { status: 200 });
 }
